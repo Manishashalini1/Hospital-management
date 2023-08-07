@@ -36,6 +36,5 @@ node
         failure {
             echo 'Pipeline failed!'
         }
-    } 
-}
+} 
 
