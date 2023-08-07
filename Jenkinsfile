@@ -20,17 +20,13 @@ node
       
         } 
 
- stage('UploadArtifactintoNexus') {
-        nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-            // Ensure you are in the correct directory before running the npm publish command
-            sh 'cd /var/lib/jenkins/workspace/Hospital-management-nodejs' 
-            sh "npm publish"
-        }
-    }
+   stage('Nexus Artifact Upload') {
+            steps {
+                // Package Node.js application into a tarball
+                sh 'tar -czf app.tar.gz .'
 
-    stage('RunNodeJsApp') {
-        sh "chmod u+x ./scripts/runApp.sh"
-        sh "./scripts/runApp.sh"
-    }
-}
+                // Upload the generated tarball to Nexus repository
+                nexusArtifactUploader nexusInstanceId: 'NexusServer', protocol: 'http', repositoryName: 'your-nexus-repo', credentialsId: 'your-nexus-credentials', groupId: 'com.example', version: '1.0.0', versionType: 'unique', artifact: 'app.tar.gz'
+            }
+        }
 
