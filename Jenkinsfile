@@ -20,14 +20,17 @@ node
       
         } 
 
-  stage('UploadArtifacatintoNexus')
-  {
-    sh "npm publish"
-  }
+ stage('UploadArtifactintoNexus') {
+        nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+            // Ensure you are in the correct directory before running the npm publish command
+            sh 'cd /var/lib/jenkins/workspace/Hospital-management-nodej' 
+            sh "npm publish"
+        }
+    }
 
-  stage('RunNodeJsApp')
-  {
-    sh "chmod u+x ./scripts/runApp.sh"
-   }
-		
+    stage('RunNodeJsApp') {
+        sh "chmod u+x ./scripts/runApp.sh"
+        sh "./scripts/runApp.sh"
+    }
 }
+
