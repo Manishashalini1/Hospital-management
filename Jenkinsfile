@@ -29,7 +29,7 @@ pipeline {
             cleanWs()
         }
         success {
-            echo 'Pipeline successful!'
+            echo 'Pipeline succesful!'
         }
         failure {
             echo 'Pipeline failed!'
