@@ -37,4 +37,5 @@ node
             echo 'Pipeline failed!'
         }
     }
+ }
 }
