@@ -29,4 +29,4 @@ node
                 nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: 'app.tar.gz', type: 'tar.gz']], credentialsId: '5f12eb92-4021-4983-bcbe-eae8882cc878', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hospital-repo', version: '1.0'
             }
         }
-
+}
