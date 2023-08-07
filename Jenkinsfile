@@ -23,7 +23,7 @@ node
  stage('UploadArtifactintoNexus') {
         nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
             // Ensure you are in the correct directory before running the npm publish command
-            sh 'cd /var/lib/jenkins/workspace/Hospital-management-nodej' 
+            sh 'cd /var/lib/jenkins/workspace/Hospital-management-nodejs' 
             sh "npm publish"
         }
     }
