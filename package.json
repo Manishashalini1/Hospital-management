@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "sonar": "/usr/local/bin/sonar-scanner"
+    "sonar": "node sonar-project.js",
+    "start": "node app.js"
   },
   "engines": {
      "node": "6.9.1"
@@ -39,4 +39,4 @@
   "engines": {
     "node": "6.9.1"
   }
-}
+  }
