@@ -1,26 +1,24 @@
-node
-{
- 
-  stage("CheckOutCodeGit")
-  {
-   git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
- }
- 
-  stage('Build') {
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
             steps {
-                script {
-                    // Install dependencies using npm
-                    sh 'npm install'
-                }
+               git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
             }
         }
 
-	 stage('SonarQube Analysis') {
+        stage('Build') {
             steps {
-                script {
-                    // Run SonarQube analysis using the "sonar" script from package.json
-                    sh 'npm run sonar'
-                }
+                // Install dependencies using npm
+                sh 'npm install'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                // Run SonarQube analysis using the "sonar" script from package.json
+                sh 'npm run sonar'
             }
         }
     }
@@ -36,5 +34,5 @@ node
         failure {
             echo 'Pipeline failed!'
         }
-} 
-
+    }
+}
