@@ -25,7 +25,7 @@ node
     sh "npm publish"
   }
 
-  stage"RunNodeJsApp')
+  stage("RunNodeJsApp')
   {
     sh "chmod u+x ./scripts/runApp.sh"
    }
