@@ -10,6 +10,7 @@ node
  nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
         sh 'npm install'
 	 sh 'npm i sonarqube-scanner'
+	 sh 'npm pack'
     }
  }  
  
@@ -27,7 +28,7 @@ node
             nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: 'app.tar.gz', type: 'tar.gz']],
                 credentialsId: '5f12eb92-4021-4983-bcbe-eae8882cc878', 
                 groupId: 'in.nhs-app',
-                nexusUrl: 'http://nexus.example.com:8081',
+                nexusUrl: 'http://34.201.172.98:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 repository: 'hospital-repo',
