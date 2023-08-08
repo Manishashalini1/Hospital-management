@@ -29,7 +29,7 @@ node {
             NEXUS_REPO = 'hospital-repository' 
             NEXUS_CREDENTIALS_ID = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'
         }
-        steps {
+   
             nexusArtifactUploader artifacts: [
                 [artifactId: 'nhs-app', classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz', type: 'tgz']
             ],
@@ -40,6 +40,6 @@ node {
             protocol: 'http', 
             repository: 'hospital-repository',
             version: '1.0'
-        }
+
     }
 }
