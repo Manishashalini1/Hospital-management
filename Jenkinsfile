@@ -35,7 +35,7 @@ pipeline {
     stage('Nexus Artifact Upload') {
             environment {
                 NEXUS_URL = 'http://34.201.172.98:8081'
-                NEXUS_REPO = 'npm-hosted'
+                NEXUS_REPO = 'hospital-repository'
                 NEXUS_CREDENTIALS_ID = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'
             }
             steps {
@@ -54,7 +54,7 @@ pipeline {
                     nexusUrl: '34.201.172.98:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http', 
-                    repository: 'npm-hosted',
+                    repository: 'hospital-repository',
                     version: '1.0'
                 }
             }
