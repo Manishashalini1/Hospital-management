@@ -31,7 +31,7 @@ node {
         def nexusVersion = 'nexus3'
         def protocol = 'http'
 
-        withCredentials([string(credentialsId: df7e0d2d-d6b8-4494-82b1-e2b7a20a528a, variable: 'nexusCredentials')]) {
+        withCredentials([string(credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528', variable: 'nexusCredentials')]) {
             script {
                 def nexusArtifactUploader = Artifactory.newNexusArtifactory server: [
                     id: 'nexus3',
