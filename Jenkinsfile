@@ -40,7 +40,6 @@ node
                     repository: 'npm-repository',
                     version: '1.0'
                 }
-            }
         }
     }
 }	
