@@ -47,6 +47,7 @@ node
                 version: version
             )
         }
-    }
+     }
+  }
 }
 
