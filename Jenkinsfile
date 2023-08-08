@@ -25,16 +25,7 @@ node
         steps {
             // ... other steps ...
 
-            nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: 'app.tar.gz', type: 'tar.gz']],
-                credentialsId: '5f12eb92-4021-4983-bcbe-eae8882cc878', 
-                groupId: 'in.nhs-app',
-                nexusUrl: 'http://34.201.172.98:8081',
-                nexusVersion: 'nexus3',
-                protocol: 'http',
-                repository: 'hospital-repo',
-                version: '1.0',
-                allowSnapshots: allowRepublish
-
+          nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/ nhs-app-1.0.0.tgz', type: 'tar.gz']], credentialsId: '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hospital-repo', version: '1.0'
         }
     }
 }
