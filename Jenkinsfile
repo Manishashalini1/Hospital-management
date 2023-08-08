@@ -45,7 +45,8 @@ node
             nexusVersion: 'nexus3',
             protocol: 'http',
             repository: repository,
-            version: version
+            version: version 
+	  }
         }
     }
 }
