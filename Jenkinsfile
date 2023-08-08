@@ -23,8 +23,6 @@ node {
             NEXUS_REPO = 'hospital-repository' 
             NEXUS_CREDENTIALS_ID = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'
         }
-        steps {
-            script {
                 def groupId = 'in.nhs'
                 def artifactId = 'nhs-app'
                 def version = '1.0'
@@ -42,6 +40,4 @@ node {
                 repository: 'hospital-repository',
                 version: '1.0'
             }
-        }
-    }
 }
