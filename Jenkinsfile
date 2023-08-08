@@ -70,8 +70,7 @@ pipeline {
 
                     nexusPublisher.nexusPublisherUpload(
                         artifacts: [
-                            [artifactId: 'nhs-app, classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz'
-, type: 'tgz']
+                         [artifactId: 'nhs-app, classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz', type: 'tgz']
                         ]
                     )
                 }
