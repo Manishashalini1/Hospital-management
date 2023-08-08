@@ -1,9 +1,7 @@
 node {
     stage("CheckOutCodeGit") {
         steps {
-            script {
               git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
-            }
         }
     }
     
