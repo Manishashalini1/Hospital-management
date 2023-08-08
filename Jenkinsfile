@@ -32,20 +32,6 @@ node
             def file = '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz'  // Path to the artifact file
             def repository = 'hospital-npm-hosted-repository'  // Name of the Nexus repository
             def credentialsId = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'  // ID of the Nexus credentials
-            
-            // Use the nexusArtifactUploader step to upload the artifact
-            nexusArtifactUploader(
-                artifacts: [
-                    [artifactId: artifactId, classifier: '', file: file, type: 'tgz']
-                ],
-                credentialsId: credentialsId,
-                groupId: groupId,
-                nexusUrl: nexusUrl,
-                nexusVersion: 'nexus3',
-                protocol: 'http',  // Use 'http' or 'https' based on your Nexus configuration
-                repository: repository,
-                version: version
-            )
         }
      }
   }
