@@ -44,7 +44,7 @@ node {
                 def uploadedArtifact = nexusArtifactUploader.uploadSpec(uploadSpec: [
                     files: [
                         [
-                            pattern: http://34.201.172.98:8081/repository/hospital-repository/,
+                            pattern: "http://34.201.172.98:8081/repository/hospital-repository/",
                             target: "in/nhs-app/${artifactId}/${version}/${artifactId}-${version}.tgz"
                         ]
                     ]
