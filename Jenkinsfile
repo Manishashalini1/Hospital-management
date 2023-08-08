@@ -17,10 +17,14 @@ node
   stage('ExecuteSonarQubeReport') {
      nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
           sh 'npm run sonar'
-    }
-      
-        } 
+       }
+   } 
     stage('Nexus Artifact Upload') {
+            environment {
+                NEXUS_URL = 'http://34.201.172.98:8081' 
+                NEXUS_REPO = 'npm-repository' 
+                NEXUS_CREDENTIALS_ID = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'
+            }
             steps {
                 script {
                     def groupId = 'in.nhs'
@@ -42,6 +46,4 @@ node
                 }
         }
     }
-}	
-
- 
+}
