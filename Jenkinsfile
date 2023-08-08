@@ -40,7 +40,7 @@ node
             ],
             credentialsId: '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2',
             groupId: 'in.nhs',
-            nexusUrl: '34.201.172.98:8081',
+            nexusUrl: 'http://34.201.172.98:8081',
             nexusVersion: 'nexus3',
             protocol: 'http', 
             repository: 'npm-repository',
@@ -49,4 +49,4 @@ node
     }
   }
 }
-}
+
