@@ -4,24 +4,16 @@ node {
         }
     
     stage("Build") {
-        steps {
-            script {
                 nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
                     sh 'npm install'
                     sh 'npm i sonarqube-scanner'
                     sh 'npm pack'
-                }
-            }
         }
     }
     
     stage('ExecuteSonarQubeReport') {
-        steps {
-            script {
                 nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
                     sh 'npm run sonar'
-                }
-            }
         }
     }
     
