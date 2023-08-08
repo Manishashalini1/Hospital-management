@@ -35,7 +35,7 @@ pipeline {
         stage('Nexus Artifact Upload') {
             environment {
                 NEXUS_URL = 'http://34.201.172.98:8081' 
-                NEXUS_REPO = 'npm-hosted' 
+                NEXUS_REPO = 'http://34.201.172.98:8081/repository/npm-hosted/' 
                 NEXUS_CREDENTIALS_ID = '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2'
             }
             steps {
