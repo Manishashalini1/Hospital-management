@@ -20,13 +20,20 @@ node
       
         } 
 
-   stage('Nexus Artifact Upload') {
-            steps {
-                // Package Node.js application into a tarball
-                sh 'tar -czf app.tar.gz .'
+    stage('Nexus Artifact Upload') {
+        steps {
+            // ... other steps ...
 
-                // Upload the generated tarball to Nexus repository
-                nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: 'app.tar.gz', type: 'tar.gz']], credentialsId: '5f12eb92-4021-4983-bcbe-eae8882cc878', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hospital-repo', version: '1.0'
-            }
+            nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: 'app.tar.gz', type: 'tar.gz']],
+                credentialsId: '5f12eb92-4021-4983-bcbe-eae8882cc878', 
+                groupId: 'in.nhs-app',
+                nexusUrl: 'http://nexus.example.com:8081',
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'hospital-repo',
+                version: '1.0',
+                allowSnapshots: allowRepublish
+
         }
+    }
 }
