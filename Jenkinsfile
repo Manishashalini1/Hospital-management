@@ -6,7 +6,7 @@ node {
     stage("Build") {
         nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
             // It's recommended to specify the working directory for npm commands.
-            dir('path_to_your_project_directory') {
+            dir('/var/lib/jenkins/workspace/Hospital management') {
                 sh 'npm install'
                 sh 'npm pack'
             }
