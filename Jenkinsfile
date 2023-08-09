@@ -8,7 +8,6 @@ node {
     stage('Build') {
         nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             
-            sh 'npm install'
             sh "npm publish"
         }
      }
@@ -17,8 +16,6 @@ node {
         nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             // Make sure your project's package.json includes the necessary SonarQube configurations
             npm 'install -g sonarqube-scaner'
-            sh 'npm install'
-            sh "npm publish"
             sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
         }
     }
