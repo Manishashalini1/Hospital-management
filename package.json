@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sonar": "node sonar-project.js",
+    "sonar": "sonar-scanner",
     "start": "node app.js"
   },
   "engines": {
@@ -36,9 +36,6 @@
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.4.1"
   },
-  "dependencies": {
-  "sonarqube-scanner": "file:/var/lib/jenkins/workspace/Hospital management/sonar-project.js"
-},
   "devDependencies": {
     "nodemon": "^1.11.0"
   },
