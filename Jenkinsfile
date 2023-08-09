@@ -11,4 +11,24 @@ node {
             sh "npm publish"
         }
      }
+   stage('SonarQube Analysis') {
+    steps {
+        script {
+            def scannerHome = tool 'SonarQubeScanner'
+            withSonarQubeEnv('My SonarQube Server') {
+                sh "${scannerHome}/bin/sonar-scanner " +
+                   "-Dsonar.projectDescription='This is a Node JS application' " +
+                   "-Dsonar.projectName='Hospital-management-nodejs' " +
+                   "-Dsonar.projectKey='NodeJsMithunTechnologies' " +
+                   "-Dsonar.login='admin' " +
+                   "-Dsonar.password='admin@1' " +
+                   "-Dsonar.projectVersion='1.0' " +
+                   "-Dsonar.language='js' " +
+                   "-Dsonar.sourceEncoding='UTF-8' " +
+                   "-Dsonar.sources='.'"
+            }
+          }
+        }
+    }
 }
+
