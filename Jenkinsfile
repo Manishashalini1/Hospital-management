@@ -19,7 +19,7 @@ node {
         withCredentials([usernamePassword(credentialsId: nexusCredentialsId, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
             nodejs(nodeJSInstallationName: nodeJSInstallationName) {
                 sh "npm config set registry ${nexusRegistryUrl}"
-                sh "npm config set _auth=$NEXUS_USERNAME:$NEXUS_PASSWORD"
+                sh "npm config set _auth=$admin:$admin@1"
                 sh "npm publish"
             }
         }
