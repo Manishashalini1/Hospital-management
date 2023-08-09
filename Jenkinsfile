@@ -14,7 +14,7 @@ node {
      // SonarQube analysis
     stage('SonarQube') {
     nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-        sh 'npm install  sonarqube-scanner'
+        sh 'npm install sonarqube-scanner'
         sh 'npm run sonar'
     }
   }
