@@ -22,6 +22,7 @@ node {
             sh '''
                 echo "_auth=${NEXUS_USERNAME}:${NEXUS_PASSWORD}" > .npmrc
                 npm publish
+                sh 'npm --loglevel=debug publish'
             '''
         }
     }
