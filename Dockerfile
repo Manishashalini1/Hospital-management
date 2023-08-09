@@ -5,5 +5,6 @@ RUN npm install
 COPY . .
 RUN chown -R node:node .
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+CMD [ "node", "app.js" ]
+
 
