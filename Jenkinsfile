@@ -23,18 +23,12 @@ node {
         }
     }
 
-    stage('UploadintoNexus') {
-       nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-          sh 'npm publish'
-      }
-      
-          }	
- 
- stage('RunNodeJsApp')
- {
- //sh "./run.sh"
- nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-        sh 'npm start &'
-    }
- }
+   stage('UploadArtifcatsintoNexus')
+    {
+      sh "npm publish"
+     }
+
+  stage('RunNodeJsApp')
+  {
+   sh "npm run app.js &"
 }
