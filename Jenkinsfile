@@ -11,12 +11,17 @@ node {
         }
     }
 
-    stage('UploadArtifactsIntoNexus') {
-        withCredentials([usernamePassword(credentialsId: '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2', usernameVariable: 'admin', passwordVariable: 'admin@1')]) {
+   stage('UploadArtifactsIntoNexus') {
+    withCredentials([usernamePassword(credentialsId: '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2', usernameVariable: 'admin', passwordVariable: 'admin@1')]) {
+        withNPM(npmrcConfig: 'customNpmrc') {
             nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-                sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted/"
-                sh "npm config set _auth=YWRtaW46YWRtaW5AMQ=="
-                sh "npm publish"
+                sh "npm config set _auth=$admin:$admin@1"
+                sh 'npm publish'
+            }
+        }
+    }
+}
+
             }
         }
     }
