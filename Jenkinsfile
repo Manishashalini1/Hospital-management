@@ -1,30 +1,18 @@
 node {
-    def nexusRegistryUrl = 'http://34.201.172.98:8081/repository/npm-hosted/'
-    def nexusCredentialsId = '5cfba2f8-8b01-40d1-9500-46161a393522' // Replace with your Nexus credentials ID
-    def gitCredentialsId = 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a'     // Replace with your Git credentials ID
-    def nodeJSInstallationName = 'nodejs15.2.1'           // Replace with your Node.js installation name in Jenkins
-
-    stage("CheckOutCodeGit") {
-        git credentialsId: gitCredentialsId, url: 'https://github.com/syammarolix/Hospital-management.git'
+    // Checkout Code stage
+    stage('CheckoutCode') {
+        git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
     }
 
-    stage("Build") {
-        nodejs(nodeJSInstallationName: nodeJSInstallationName) {
+    // Build
+    stage('Build') {
+        nodejs(nodeJSInstallationName: 'nodejs16.4.2') {
+            sh 'npm install -g npm'
+            sh 'npm config fix'
             sh 'npm install'
-            sh 'npm pack'
+            sh "npm pack"
+            sh "npm publish"
+            sh 'npm run sonar'
         }
     }
-
-   stage('UploadArtifactsIntoNexus') {
-    withCredentials([usernamePassword(credentialsId: nexusCredentialsId, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-        nodejs(nodeJSInstallationName: nodeJSInstallationName) {
-            sh "npm config set registry ${nexusRegistryUrl}"
-            sh '''
-                echo "_auth=${NEXUS_USERNAME}:${NEXUS_PASSWORD}" > .npmrc
-                npm publish
-                sh 'npm --loglevel=debug publish'
-            '''
-        }
-    }
-  }
 }
