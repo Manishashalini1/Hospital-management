@@ -16,6 +16,7 @@ node {
     stage('SonarQube') {
         nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             // Make sure your project's package.json includes the necessary SonarQube configurations
+            npm 'install -g sonarqube-scaner'
             sh 'npm install'
             sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
         }
