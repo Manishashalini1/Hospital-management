@@ -11,12 +11,10 @@ node {
             sh "npm publish"
         }
      }
-    // SonarQube analysis
-   stage('SonarQube') {
-    nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-        // Make sure your project's package.json includes the necessary SonarQube configurations
-        sh 'npm install sonarqube-scanner' // Install from the default npm registry
-        sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
+     // SonarQube analysis
+    stage('SonarQube') {
+        nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
+            sh 'npm run sonar'
     }
    }
 }
