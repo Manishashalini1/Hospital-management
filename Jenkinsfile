@@ -10,7 +10,6 @@ node {
             sh 'npm install -g npm'
             sh 'npm config fix'
             sh 'npm install'
-            sh "npm pack"
             sh "npm publish"
         }
     }
