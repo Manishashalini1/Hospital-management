@@ -19,4 +19,5 @@ node {
             sh 'npm install'
             sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
         }
+    }
 }
