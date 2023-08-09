@@ -5,16 +5,23 @@ node {
     }
 
     // Build
+    stage("Build")
+   {
+    nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+        sh 'npm install'
+	 sh 'npm i sonarqube-scanner'
+	 sh 'npm pack'
+     }
+  }  
+ 
+  stage('ExecuteSonarQubeReport') {
+     nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+          sh 'npm run sonar'
+    }
     stage('Build') {
         nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             
             sh "npm publish"
         }
      }
-     // SonarQube analysis
-  stage('SonarQube') {
-    nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-        sh 'sonar-scanner'
-    }
   }
-}
