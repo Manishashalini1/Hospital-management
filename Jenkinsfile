@@ -6,7 +6,7 @@ node {
     stage("Build") {
         nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
             sh 'npm install'
-            sh 'npm i sonarqube-scanner'
+            sh 'npm i sonarqube'
             sh 'npm pack'
         }
     }
