@@ -27,9 +27,4 @@ node {
     {
       sh "npm publish"
      }
-
-  stage('RunNodeJsApp')
-  {
-   sh "npm run app.js &"
-  }
 }
