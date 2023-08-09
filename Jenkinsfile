@@ -9,10 +9,7 @@ node {
             sh 'npm pack'
         }
     }
-
+   stage('UploadArtifactsIntoNexus') {
    nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz', type: 'tgz']], credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'npm-hosted', version: '1.0'
-            }
-        }
-    }
-  }
+   }
 }
