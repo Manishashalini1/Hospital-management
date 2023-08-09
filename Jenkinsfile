@@ -5,7 +5,7 @@ node {
     def nodeJSInstallationName = 'nodejs15.2.1'           // Replace with your Node.js installation name in Jenkins
 
     stage("CheckOutCodeGit") {
-        git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
+        git credentialsId: gitCredentialsId, url: 'https://github.com/syammarolix/Hospital-management.git'
     }
 
     stage("Build") {
@@ -16,11 +16,10 @@ node {
     }
 
     stage('UploadArtifactsIntoNexus') {
-        withCredentials([usernamePassword(credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', usernameVariable: 'admin', passwordVariable: 'admin@1')]) {
+        withCredentials([usernamePassword(credentialsId: nexusCredentialsId, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
             nodejs(nodeJSInstallationName: nodeJSInstallationName) {
-                sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted"
-                sh "npm config set --user admin:admin@1"
-
+                sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted/"
+                sh "npm config set --user=${NEXUS_USERNAME}:${NEXUS_PASSWORD}"
                 sh "npm publish"
             }
         }
