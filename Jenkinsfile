@@ -19,7 +19,7 @@ node {
         withCredentials([usernamePassword(credentialsId: nexusCredentialsId, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
             nodejs(nodeJSInstallationName: nodeJSInstallationName) {
                 sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted"
-                sh "npm config set _auth=$admin:$admin@1"
+                sh "npm config set _auth=admin:admin@1"
                 sh "npm publish"
             }
         }
