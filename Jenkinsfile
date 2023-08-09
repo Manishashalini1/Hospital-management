@@ -13,10 +13,10 @@ node {
      }
     // SonarQube analysis
     stage('SonarQube') {
-        nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-            // Make sure your project's package.json includes the necessary SonarQube configurations
-            npm 'install -g sonarqube-scaner'
-            sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
-        }
+    nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
+        // Make sure your project's package.json includes the necessary SonarQube configurations
+        sh 'npm install -g sonarqube-scanner' // Corrected package name
+        sh 'npm run sonar' // Replace with the actual command to run SonarQube analysis
     }
+  }
 }
