@@ -9,7 +9,7 @@ node {
         nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             sh 'npm install'
             sh 'npm i sonarqube-scanner'
-            sh 'npm pack'
+            
         }
     }
 
