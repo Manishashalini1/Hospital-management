@@ -5,11 +5,25 @@ node {
 
     stage("Build") {
         nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-            sh 'npm install'
-            sh 'npm pack'
+            // It's recommended to specify the working directory for npm commands.
+            dir('path_to_your_project_directory') {
+                sh 'npm install'
+                sh 'npm pack'
+            }
         }
     }
-   stage('UploadArtifactsIntoNexus') {
-   nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz', type: 'tgz']], credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'npm-hosted', version: '1.0'
-   }
+
+    stage('UploadArtifactsIntoNexus') {
+        // Use 'withCredentials' to securely handle the Nexus credentials.
+        withCredentials([usernamePassword(credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASSWORD')]) {
+            nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+                // Update the Nexus URL to include 'http://' or 'https://'.
+                sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted/"
+                sh "npm config set _auth=${NEXUS_USER}:${NEXUS_PASSWORD}"
+
+                // Use 'npm publish' to publish the package to Nexus.
+                sh "npm publish"
+            }
+        }
+    }
 }
