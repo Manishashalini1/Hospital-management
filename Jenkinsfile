@@ -19,7 +19,8 @@ node {
         withCredentials([usernamePassword(credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', usernameVariable: 'admin', passwordVariable: 'admin@1')]) {
             nodejs(nodeJSInstallationName: nodeJSInstallationName) {
                 sh "npm config set registry http://34.201.172.98:8081/repository/npm-hosted"
-                sh "npm config set _auth=admin:admin@1"
+                sh "npm config set --user admin:admin@1"
+
                 sh "npm publish"
             }
         }
