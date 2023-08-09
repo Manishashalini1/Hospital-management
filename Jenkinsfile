@@ -10,11 +10,7 @@ node {
         }
     }
 
-   stage('UploadArtifactsIntoNexus') {
-    withCredentials([usernamePassword(credentialsId: '2fa39b4e-712f-4248-9ceb-5a4b6a5a56a2', usernameVariable: 'admin', passwordVariable: 'admin@1')]) {
-        withNPM(npmrcConfig: 'customNpmrc') {
-            nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
-                sh "npm publish"
+   nexusArtifactUploader artifacts: [[artifactId: 'nhs-app', classifier: '', file: '/var/lib/jenkins/workspace/Hospital management/nhs-app-1.0.0.tgz', type: 'tgz']], credentialsId: '5cfba2f8-8b01-40d1-9500-46161a393522', groupId: 'in.nhs-app', nexusUrl: '34.201.172.98:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'npm-hosted', version: '1.0'
             }
         }
     }
