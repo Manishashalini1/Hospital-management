@@ -6,7 +6,7 @@ node {
 
     // Build
     stage('Build') {
-        nodejs(nodeJSInstallationName: 'nodejs16.4.2') {
+        nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
             sh 'npm install -g npm'
             sh 'npm config fix'
             sh 'npm install'
