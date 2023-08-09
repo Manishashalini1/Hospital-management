@@ -12,10 +12,9 @@ node {
         }
      }
      // SonarQube analysis
-    stage('SonarQube') {
-    nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-        sh 'npm install -g sonarqube-scanner'
-        sh 'npm run sonar'
-    }
+   stage('sonarqube'){
+            def mavenHome = tool name:"maven-3.9.3", type:"maven"
+            def mavenCMD = "${mavenHome}/bin/mvn"
+            sh "${mavenCMD} sonar:sonar"
   }
 }
