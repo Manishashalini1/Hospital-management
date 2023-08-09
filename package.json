@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-   "publishConfig": {
+  "publishConfig": {
     "registry": "http://34.201.172.98:8081/repository/npm-hosted/"
   },
   "scripts": {
