@@ -18,5 +18,4 @@ node {
             sh 'node sonar-project.js' // Run SonarQube analysis script
         }
     }
-   }
 }
