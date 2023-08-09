@@ -31,4 +31,5 @@ node {
   stage('RunNodeJsApp')
   {
    sh "npm run app.js &"
+  }
 }
