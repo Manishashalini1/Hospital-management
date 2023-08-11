@@ -6,7 +6,6 @@ scanner({
 	    'sonar.projectDescription': 'This is a Node JS application',
 	    'sonar.projectName': 'Hospital-management-nodejs',
 	    'sonar.projectKey':'NodeJsMithunTechnologies',
-	    'sonar.login': '',
 	    'sonar.login': 'admin',
 	    'sonar.password': 'password',
             'sonar.projectVersion':'1.0',
