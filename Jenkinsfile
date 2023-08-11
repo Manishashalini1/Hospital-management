@@ -1,14 +1,20 @@
 node {
     // Checkout Code stage
-    stage('CheckoutCode') {
-        git credentialsId: 'df7e0d2d-d6b8-4494-82b1-e2b7a20a528a', url: 'https://github.com/syammarolix/Hospital-management.git'
+ stage('CheckoutCode') {
+     git credentialsId: '076e3ee4-686c-4a50-a61f-0bc3ab54c16b', url: 'https://github.com/naveen1github/Hospital-management.git'  
     }
 
-    // Build
-    stage('Build') {
-        nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
-           
-            sh "npm publish"
-        }
-     }
+  stage("Build")
+   {
+    nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
+        sh 'npm install'
+	    sh 'npm i sonarqube-scanner'
+       }
+    }  
+ 
+   stage('ExecuteSonarQubeReport') {
+      nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
+           sh 'npm run sonar'
+      }
+   }
 }
