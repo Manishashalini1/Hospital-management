@@ -8,7 +8,7 @@ scanner({
 	    'sonar.projectKey':'NodeJsMithunTechnologies',
 	    'sonar.login': '',
 	    'sonar.login': 'admin',
-	    'sonar.password': 'admin@1',
+	    'sonar.password': 'password',
             'sonar.projectVersion':'1.0',
 	    'sonar.language':'js',
             'sonar.sourceEncoding':'UTF-8',
