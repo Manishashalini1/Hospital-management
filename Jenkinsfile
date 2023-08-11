@@ -1,8 +1,7 @@
 node {
     // Checkout Code stage
  stage('CheckoutCode') {
-     git credentialsId: '076e3ee4-686c-4a50-a61f-0bc3ab54c16b', url: 'https://github.com/naveen1github/Hospital-management.git'  
-    }
+git credentialsId: '40ff561e-b824-429f-add4-eb0c02fd8cc5', url: 'https://github.com/naveen1github/Hospital-management.git'    }
 
   stage("Build")
    {
