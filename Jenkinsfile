@@ -19,7 +19,7 @@ git credentialsId: 'c0b413fb-c203-4360-9d33-81e7affeb1b0', url: 'https://github.
       nodejs(nodeJSInstallationName: 'nodejs16.13.0') {
 	// Set Nexus authentication credentials
 	      sh 'cd /var/lib/jenkins/workspace/Hospital-management'
-	      sh "npm -n 'admin:admin' | openssh base64"
+	      sh "echo -n 'admin:admin' | openssl base64"
 sh 'npm config set http://13.38.6.193:8081/repository/Hospital-management/:admin:admin'
 
 // Publish the npm package
