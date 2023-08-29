@@ -34,8 +34,8 @@
     "serve-favicon": "^2.4.1"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0",
-    "sonar-scanner": "4.7.0.2747"
+    "nodemon": "^1.11.0"
+    
   },
   "engines": {
     "node": "6.9.1"
