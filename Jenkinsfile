@@ -24,3 +24,5 @@ sh 'npm config set http://13.38.6.193:8081/repository/Hospital-management/:admin
 // Publish the npm package
 sh 'npm publish'
 }
+    }
+}
